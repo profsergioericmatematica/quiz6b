@@ -36,6 +36,20 @@
             margin-bottom: 10px;
         }
         
+        .header-info {
+            margin-bottom: 15px;
+        }
+        
+        .instagram-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .instagram-link:hover {
+            text-decoration: underline;
+        }
+        
         .quiz-card {
             background-color: white;
             border-radius: 10px;
@@ -90,6 +104,7 @@
             cursor: pointer;
             font-size: 1rem;
             transition: background-color 0.3s;
+            margin-right: 10px;
         }
         
         .btn:hover {
@@ -102,6 +117,14 @@
         
         .btn-next:hover {
             background-color: #1976D2;
+        }
+        
+        .btn-restart {
+            background-color: #FF9800;
+        }
+        
+        .btn-restart:hover {
+            background-color: #F57C00;
         }
         
         .correction-container {
@@ -151,19 +174,51 @@
             color: #757575;
             font-size: 0.9rem;
         }
+        
+        .results-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .score {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+        
+        .results-details {
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .result-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .result-correct {
+            background-color: #e8f5e9;
+        }
+        
+        .result-incorrect {
+            background-color: #ffebee;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Simulado de Educação Financeira</h1>
-            <p>Nível 1 - 6º ano - Professor Sergio Eric</p>
-            <p>
-        Siga-me no Instagram:
-        <a href="https://www.instagram.com/prof.sergio.eric.matematica/" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram"></i> @prof.sergio.eric.matematica
-        </a>
-    </p>
+            <div class="header-info">
+                <p>Nível 1 - 6º e 7º anos - Professor Sergio Eric</p>
+                <p>
+                    Siga-me no Instagram:
+                    <a href="https://www.instagram.com/prof.sergio.eric.matematica/" target="_blank" rel="noopener noreferrer" class="instagram-link">
+                        @prof.sergio.eric.matematica
+                    </a>
+                </p>
+            </div>
         </header>
         
         <div class="progress-bar">
@@ -189,8 +244,9 @@
     </div>
 
     <script>
-        // Dados das questões
+        // Dados das questões (35 questões conforme o PDF)
         const questions = [
+            // Questões 1 a 18 - MA01 - EDUCAÇÃO FINANCEIRA BÁSICA
             {
                 id: 1,
                 text: "É importante ter um dinheiro guardado para imprevistos. O ideal é guardar o suficiente para poder pagar todas as suas despesas por alguns meses. O dinheiro guardado com essa finalidade é chamado de:",
@@ -230,8 +286,6 @@
                 correctAnswer: 2,
                 explanation: "Alternativa C – Inflação, poder de compra, IPCA."
             },
-            // Adicione as demais questões seguindo o mesmo padrão
-            // (Como exemplo, adicionarei apenas mais uma para demonstração)
             {
                 id: 4,
                 text: "No país 'Títuloquistão', uma cesta básica custa R$ 50,00, enquanto no país 'Indicelândia', a mesma cesta básica custa R$ 160,00. Após 1 ano, o preço da cesta básica subiu para R$ 100,00 no 'Títuloquistão' e R$ 180,00 na 'Indicelândia'. Qual dos dois países teve a inflação mais alta durante esse período?",
@@ -244,6 +298,411 @@
                 ],
                 correctAnswer: 0,
                 explanation: "Alternativa A – O país 'Títuloquistão'."
+            },
+            {
+                id: 5,
+                text: "Sofia e João estão jogando um jogo de tabuleiro em que eles têm que gerenciar uma fazenda. Na primeira partida, João não tinha _____, e, precisando de areia, trocou dois sacos de adubo que ele tinha por três sacos de areia com Sofia, realizando um _____. Contudo, na segunda partida, Sofia teve a ideia de usarem um cartão de _____ de brinquedo para realizarem as transações, através do qual o valor total seria parcelado em 3 rodadas do jogo.",
+                options: [
+                    "A ouro, escambo, Pix.",
+                    "B escambo, crédito, dinheiro.",
+                    "C dinheiro, escambo, crédito.",
+                    "D Pix, débito, crédito.",
+                    "E escambo, dinheiro, débito."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – dinheiro, escambo, crédito."
+            },
+            {
+                id: 6,
+                text: "Max é um jovem que está pensando em economizar um pouco do seu salário para que consiga garantir uma boa aposentadoria no futuro. Para isso, ele precisa _____ mais do que _____, aplicando essa diferença em investimentos para serem resgatados no _____ prazo. Uma boa opção é o título do Tesouro Direto _____.",
+                options: [
+                    "ganhar, gasta, curto, Educa+.",
+                    "salvar, ganha, longo, Selic+.",
+                    "ganhar, gasta, longo, Renda+.",
+                    "gastar, ganha, curto, Renda+.",
+                    "ganhar, salvar, longo, Educa+."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – ganhar, gasta, longo, Renda+."
+            },
+            {
+                id: 7,
+                text: "Davi está participando de um jogo educativo no qual ele avança um número de casas com base no número de afirmações corretas que fizer sobre a Taxa Selic. Durante o jogo, Davi tirou uma carta que apresenta as seguintes afirmações: I. A taxa Selic representa a taxa de juros básica dos Estados Unidos. II. A taxa Selic não influencia diretamente o preço dos alimentos. III. A taxa Selic é uma medida de inflação. IV. A taxa Selic é controlada pelo Presidente da República. Com base nessas afirmações, quantas casas Davi andará?",
+                options: [
+                    "0.",
+                    "1.",
+                    "2.",
+                    "3.",
+                    "4."
+                ],
+                correctAnswer: 0,
+                explanation: "Alternativa A – 0.<br>A taxa Selic representa a taxa de juros básica do Brasil.<br>A taxa Selic é alterada pelo Banco Central com o objetivo de diminuir a inflação através do corte de juros.<br>A taxa Selic é uma taxa de juros.<br>A taxa Selic é decidida por um órgão do governo chamado COPOM (Comitê de Política Monetária) que se reúne a cada 45 dias."
+            },
+            {
+                id: 8,
+                text: "Lais gosta muito de estudar o espaço sideral, lendo vários livros e assistindo dezenas de filmes sobre esse assunto. Certo dia, enquanto ia para escola, viu um livro muito legal sobre Marte, e após conferir os preços, decidiu comprar na loja Espaço Livros. Ela pode comprar este livro de duas formas: I. Pagar R$ 30,00 no momento da compra. II. Parcelar em 2x, pagando R$ 10,00 na hora da compra e R$ 24,00 dois meses depois, com juros mensais de 10%. Qual o tipo de pagamento correspondente a cada uma das formas que Lais pode pagar seu livro?",
+                options: [
+                    "A Pagamento parcelado com juros simples e pagamento à vista.",
+                    "B Pagamento à vista e pagamento parcelado com juros compostos.",
+                    "C Pagamento parcelado com juros compostos e pagamento parcelado com juros simples.",
+                    "D Pagamento parcelado com juros simples e pagamento à vista.",
+                    "E Pagamento à vista e pagamento parcelado com juros simples."
+                ],
+                correctAnswer: 4,
+                explanation: "Alternativa E – Pagamento à vista e pagamento parcelado com juros simples."
+            },
+            {
+                id: 9,
+                text: "Letícia estava assistindo a um documentário que abordava o fenômeno de acumulação de neve no topo das montanhas. A neve acumulada, quando exposta ao vento, pode se transformar em uma grande bola de neve. Da mesma forma, os investimentos com juros _____ também têm um efeito semelhante, acumulando-se ao longo do tempo.",
+                options: [
+                    "A congruentes.",
+                    "B matemáticos.",
+                    "C compostos.",
+                    "D complexos.",
+                    "E infinitos."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – compostos."
+            },
+            {
+                id: 10,
+                text: "Francisco ficou empolgado quando descobriu na escola o que era a Taxa Selic e quem a define. Ao compartilhar a novidade com sua mãe, ele esqueceu quem é responsável por definir a Taxa Selic. Para ajudar Francisco, quem, afinal, decide a taxa de juros a cada 45 dias?",
+                options: [
+                    "A Comissão de Valores Mobiliários (CVM).",
+                    "B Conselho Nacional de Seguros Privados (CNSP).",
+                    "C Associação Brasileira das Entidades dos Mercados Financeiros e de Capitais (Anbima).",
+                    "D Bolsa de Valores.",
+                    "E Comitê de Política Monetária (COPOM)."
+                ],
+                correctAnswer: 4,
+                explanation: "Alternativa E – Comitê de Política Monetária (COPOM)."
+            },
+            {
+                id: 11,
+                text: "Pedro estava jogando um jogo de videogame em que sua missão é auxiliar o Rei Paulo a otimizar o sistema de trocas de mercadorias entre seus súditos. Nesse reino, as pessoas realizam transações, trocando frutas por roupas. Para avançar de fase, qual sugestão Pedro poderia oferecer ao Rei Paulo para tornar esse sistema de trocas mais eficiente?",
+                options: [
+                    "Substituir o uso de roupas pelo uso de livros.",
+                    "Limitar o número de roupas que poderiam ser trocadas para cada fruta.",
+                    "Aumentar o número de frutas em circulação.",
+                    "Introduzir moedas cunhadas pelo reino para troca oficial entre os súditos e que será garantida pelo reino.",
+                    "Estabelecer uma 'taxa de troca' fixa entre as roupas e frutas."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – Introduzir moedas cunhadas pelo reino para troca oficial entre os súditos e que será garantida pelo reino."
+            },
+            {
+                id: 12,
+                text: "Heitor estava lendo o jornal e se deparou com a seguinte notícia: 'ECONOMIA - Inflação cai, mas preço dos alimentos continua alto em Viçosa'. Ele foi ao supermercado e à farmácia e percebeu que os preços das mercadorias, como o pão francês, o quilo de frango e os remédios tinham aumentado. Como pode isso ter acontecido?",
+                options: [
+                    "A A inflação foi negativa, o que significa que o preço das mercadorias diminuiu, ainda que esse decréscimo tenha sido menor.",
+                    "B A inflação foi positiva, o que significa que o preço das mercadorias aumentou, ainda que esse crescimento tenha sido menor.",
+                    "C A inflação foi positiva, o que significa que o preço das mercadorias diminuiu, ainda que esse crescimento tenha sido menor.",
+                    "D A inflação foi negativa, o que significa que o preço das mercadorias aumentou, ainda que esse crescimento tenha sido maior.",
+                    "E A inflação medida pelos índices de preços ao consumidor não reflete a variação verdadeira do preço das mercadorias."
+                ],
+                correctAnswer: 1,
+                explanation: "Alternativa B – A inflação foi positiva, o que significa que o preço das mercadorias aumentou, ainda que esse crescimento tenha sido menor."
+            },
+            {
+                id: 13,
+                text: "Dona Vera guarda R$ 1.500,00 em casa, dentro do guarda-roupa. Sua neta, Clara, sugere que ela invista esse dinheiro em um título prefixado que dobra o valor a cada 10 anos. Se Dona Vera seguir o conselho da neta, qual será a diferença no valor nominal do dinheiro após 20 anos, comparando o investimento com o dinheiro guardado em casa?",
+                options: [
+                    "R$ 1.500,00.",
+                    "R$ 2.500,00.",
+                    "R$ 3.000,00.",
+                    "R$ 4.500,00.",
+                    "R$ 5.000,00."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – R$ 4.500<br>Valor final no ano 10: 1.500 × 2 = R$ 3.000<br>Valor final no ano 20: 3.000 × 2 = R$ 6.000<br>Valor guardado em casa (sem rentabilidade): R$ 1.500<br>Diferença = 6.000 – 1.500 = R$ 4.500"
+            },
+            {
+                id: 14,
+                text: "No reino de Fantasia, os duendes artesãos produzem sapatos. Para expandirem seus negócios, eles precisam de ouro para comprar novas ferramentas. Enquanto isso, as fadas costureiras têm ouro guardado, mas desejam vê-lo multiplicado para adquirir fios de seda. Entra em cena o Banco Cristal, que propõe uma solução: as fadas depositam seu ouro no banco, recebendo juros como recompensa. O banco, por sua vez, usa esse ouro para emprestar aos duendes, cobrando juros maiores. Qual a função do Banco Cristal nesse cenário?",
+                options: [
+                    "Guardar o ouro das fadas para que não seja roubado por trolls.",
+                    "Emprestar dinheiro para o rei, para que ele possa construir um novo castelo.",
+                    "Criar novos negócios para duendes e fadas, diversificando a economia.",
+                    "Intermediar a relação entre poupadores (fadas) e tomadores de empréstimo (duendes), lucrando com a diferença de juros.",
+                    "Investir em novas tecnologias para os duendes, para que eles possam produzir sapatos mais modernos."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – Intermediar a relação entre poupadores (fadas) e tomadores de empréstimo (duendes), lucrando com a diferença de juros."
+            },
+            {
+                id: 15,
+                text: "José tem 30 anos e sonha em comprar um barco quando se aposentar, aos 60 anos. Ele estima que o barco dos seus sonhos custará R$ 150.000,00. Hoje, José não tem nenhum dinheiro guardado para realizar esse sonho. Se José quiser ter dinheiro suficiente para comprar o barco quando se aposentar, quanto ele precisa economizar por ano, desconsiderando a rentabilidade de seus investimentos e a inflação no período?",
+                options: [
+                    "R$ 1.500,00.",
+                    "R$ 3.333,00.",
+                    "R$ 5.000,00.",
+                    "R$ 10.000,00.",
+                    "R$ 15.000,00."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – R$ 5.000<br>Prazo: 60 anos – 30 anos (idade atual) = 30<br>Valor final: R$ 150.000<br>Poupança por ano: R$ 150.000 ÷ 30 anos = R$ 5.000 por ano"
+            },
+            {
+                id: 16,
+                text: "Ana quer comprar um vestido de R$ 300,00 para usar em um casamento daqui a 12 meses. Para isso, ela decide guardar uma quantidade igual de dinheiro todos os meses. Quanto ela precisará guardar por mês inicialmente para comprar o vestido? Após quatro meses, Ana participou de uma competição de natação, e ganhou R$ 40,00 como prêmio por ter ficado em primeiro lugar. Ela decide que vai guardar esses R$ 40,00 para ajudar a comprar o vestido. Após receber esse prêmio, quanto Ana precisará guardar por mês para comprar o vestido?",
+                options: [
+                    "A Inicialmente, R$ 20,00. Após o prêmio, R$ 18,00.",
+                    "B Inicialmente, R$ 25,00. Após o prêmio, R$ 18,00.",
+                    "C Inicialmente, R$ 25,00. Após o prêmio, R$ 20,00.",
+                    "D Inicialmente, R$ 30,00. Após o prêmio, R$ 25,00.",
+                    "E Inicialmente, R$ 30,00. Após o prêmio, R$ 20,00."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Inicialmente, R$ 25,00. Após o prêmio, R$ 20,00.<br>Valor do vestido: R$ 300,00.<br>Cenário 1: R$ 300,00 ÷ 12 meses = R$ 25,00 por mês<br>Cenário 2: R$ 25,00 × 4 meses = 100 + 40 (prêmio) = R$ 140,00. Para completar R$ 300,00, ainda faltam R$ 160,00 que divididos pelos 8 meses restantes do ano = 160 ÷ 8 = R$ 20,00 por mês."
+            },
+            {
+                id: 17,
+                text: "Dona Maria guarda suas economias em casa, escondidas em um pote de biscoitos. Seu neto, Eduardo, preocupado, tenta convencê-la a abrir uma conta no banco e começar a investir em títulos privados, como CDBs, e títulos públicos Tesouro Selic. 'Vovó, imagine que seu dinheiro é como uma plantinha. Em casa, no pote, ela pode até sobreviver, mas no banco, com adubo e cuidado, ela pode florescer!' Qual vantagem Eduardo quis ilustrar com essa analogia?",
+                options: [
+                    "A O banco protege o dinheiro contra roubos e perdas, assim como um jardim protege as plantas.",
+                    "B No banco, o dinheiro rende juros, aumentando com o tempo, assim como uma planta cresce com adubo e cuidado.",
+                    "C Guardar dinheiro em casa é arriscado, pois ele pode ser danificado, assim como uma planta pode secar sem água.",
+                    "D O banco oferece diferentes serviços financeiros, assim como um jardim pode ter diferentes tipos de plantas.",
+                    "E O banco possui marcas de fertilizante melhores do que as de Dona Maria, o que garante que as plantas vivam por mais tempo."
+                ],
+                correctAnswer: 1,
+                explanation: "Alternativa B – No banco, o dinheiro rende juros, aumentando com o tempo, assim como uma planta cresce com adubo e cuidado."
+            },
+            {
+                id: 18,
+                text: "Qual das situações a seguir poderia contribuir para o crescimento do PIB, como representado na manchete da notícia 'PIB do Brasil cresce 1,2% no segundo trimestre'?",
+                options: [
+                    "A Andressa ganhou uma bolsa da tia que viajou ao exterior.",
+                    "B Bruno investiu em uma ação que subiu 35%.",
+                    "C Priscila trocou cem moedas de 1 real por uma nota de 100 reais.",
+                    "D Diego produziu e vendeu cinco guitarras para uma banda de rock.",
+                    "E Emanuel trocou figurinhas com Fátima."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – Diego produziu e vendeu cinco guitarras para uma banda de rock.<br>O PIB representa o valor total de tudo que é produzido dentro do país."
+            },
+            // Questões 19 a 32 - MA02 – RENDA FIXA
+            {
+                id: 19,
+                text: "Daniel tem R$ 1.000,00 para investir e deseja fazer uma viagem daqui a 3 anos. Considerando que ele vai esperar até o vencimento para resgatar os títulos, qual das seguintes opções de investimento em renda fixa é a mais adequada para ele?",
+                options: [
+                    "A Um Título Prefixado do Tesouro com rentabilidade de 12,5% ao ano e prazo de vencimento de 3 anos.",
+                    "B Um Título Prefixado do Tesouro com rentabilidade de 15% ao ano e prazo de vencimento de 4 anos.",
+                    "C Um Título Prefixado do Tesouro com rentabilidade de 18% ao ano e prazo de vencimento de 5 anos.",
+                    "D Um Título Prefixado do Tesouro com rentabilidade de 20% e prazo de vencimento de 10 anos.",
+                    "E Um Título Prefixado do Tesouro com rentabilidade de 23% ao ano e prazo de vencimento de 40 anos."
+                ],
+                correctAnswer: 0,
+                explanation: "Alternativa A – Um Título Prefixado do Tesouro com rentabilidade de 12,5% ao ano e prazo de vencimento de 3 anos."
+            },
+            {
+                id: 20,
+                text: "Considere os seguintes ativos: I. Imóveis. II. Dinheiro. III. Títulos do Tesouro. Ordene os ativos acima de acordo com a liquidez, do mais líquido para o menos líquido.",
+                options: [
+                    "I, II, III.",
+                    "I, III, II.",
+                    "II, I, III.",
+                    "II, III, I.",
+                    "III, II, I."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – II, III, I"
+            },
+            {
+                id: 21,
+                text: "Certo mês, Luiza economizou R$ 100,00 e decidiu investir esse dinheiro. Ao abrir o aplicativo do banco, ela percebeu que a rentabilidade histórica dos investimentos disponíveis era dada em comparação com a taxa do CDI. Curiosa, ela decidiu perguntar o que essa sigla significa. A resposta correta para a pergunta de Luiza é",
+                options: [
+                    "Certificado de Investimentos.",
+                    "Carteira de Dinheiro Investido.",
+                    "Contrato de Dinheiro Investido.",
+                    "Certificado de Depósito Interbancário.",
+                    "Conta de Depósitos para Investimento."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – Certificado de Depósito Interbancário."
+            },
+            {
+                id: 22,
+                text: "Qual é a principal função do CDI no mercado financeiro?",
+                options: [
+                    "Medir a inflação do país.",
+                    "É um sistema de empréstimo de curtíssimo prazo entre as instituições financeiras e serve de indexador para investimentos como CDB, LCI e LCA.",
+                    "Determinar o valor do dólar.",
+                    "Estimar o valor das ações na bolsa de valores.",
+                    "Servir como comprovante de depósito em uma conta bancária."
+                ],
+                correctAnswer: 1,
+                explanation: "Alternativa B – É um sistema de empréstimo de curtíssimo prazo entre as instituições financeiras e serve de indexador para investimentos como CDB, LCI e LCA."
+            },
+            {
+                id: 23,
+                text: "Quando você investe em _____, você está emprestando dinheiro para o banco que, por sua vez, utiliza esse dinheiro para emprestar a outras pessoas e empresas. Quando você investe em _____, você está emprestando dinheiro para uma empresa que, por sua vez, utiliza esse dinheiro para financiar suas operações. Quando você investe em _____, você está emprestando dinheiro para o país que, por sua vez, utiliza esse dinheiro para financiar os serviços públicos.",
+                options: [
+                    "A um Título do Tesouro, uma Debênture e um Certificado de Depósito Bancário (CDB).",
+                    "B um Título do Tesouro, um Certificado de Depósito Bancário (CDB) e uma Debênture.",
+                    "C um Certificado de Depósito Bancário (CDB), uma Debênture e um Título do Tesouro.",
+                    "D um Certificado de Depósito Bancário (CDB), um Título do Tesouro e uma Debênture.",
+                    "E um Certificado de Recebíveis Imobiliário (CRI), um Fundo de Investimento Imobiliário (FII) e um Título do Tesouro."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Um Certificado de Depósito Bancário (CDB), uma Debênture e um Título do Tesouro."
+            },
+            {
+                id: 24,
+                text: "Joelson está pensando em investir em uma debênture (um empréstimo para uma empresa). Ele quer saber quais dos seguintes fatores influenciam a rentabilidade desse título de renda fixa: I. Taxa de Retorno. II. Prazo de Vencimento. III. Risco de Crédito. IV. Imposto sobre os rendimentos.",
+                options: [
+                    "Apenas III e IV.",
+                    "Apenas I, II e IV.",
+                    "Apenas I, III e IV.",
+                    "Apenas II, III e IV.",
+                    "I, II, III e IV."
+                ],
+                correctAnswer: 4,
+                explanation: "Alternativa E – I, II, III e IV."
+            },
+            {
+                id: 25,
+                text: "Sua irmã quer começar a investir em renda fixa e te pede algumas dicas. Ela explica que tem muito medo de perder dinheiro, ou seja, ela quer um investimento de baixo risco. Quais dos investimentos abaixo são de baixo risco? I. Tesouro Selic. II. Ações. III. CDBs com garantia do FGC. IV. Fundos Imobiliários. V. BDRs.",
+                options: [
+                    "Apenas I e II.",
+                    "Apenas I e III.",
+                    "Apenas II e IV.",
+                    "Apenas III e IV.",
+                    "Apenas IV e V."
+                ],
+                correctAnswer: 1,
+                explanation: "Alternativa B – Apenas I e III."
+            },
+            {
+                id: 26,
+                text: "A decisão de onde investir seu dinheiro depende de diversos fatores. Alguns desses fatores são o potencial de retorno, o nível de risco e por quanto tempo você pretende deixar o dinheiro investido. Quais das afirmações abaixo apresentam as vantagens dos títulos públicos? I. Maior potencial de retorno a longo prazo. II. O menor risco de crédito disponível. III. Retornos previsíveis no vencimento. IV. Opção de rentabilidade atrelada à inflação.",
+                options: [
+                    "I, II e III.",
+                    "I, II e IV.",
+                    "I, III e IV.",
+                    "I, II, III e IV.",
+                    "II e III."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – I, II, III e IV."
+            },
+            {
+                id: 27,
+                text: "Joana está guardando dinheiro para comprar um tênis daqui a 1 ano. Para não deixar o dinheiro parado, ela decide investi-lo em um produto de renda fixa. Sua avó recomenda que Joana coloque o dinheiro na poupança. Porém, Joana estudou sobre investimentos de renda fixa e explica para sua avó que fez uma simulação no site do Tesouro Direto. Qual das seguintes afirmações Joana poderia usar para explicar esse comparativo para sua avó?",
+                options: [
+                    "O Tesouro Selic tem segurança e liquidez e está rendendo mais do que a poupança.",
+                    "Apesar de ser segura e ter rendimento alto, a liquidez da poupança é baixa.",
+                    "A poupança só tem liquidez a cada 30 dias, por isso rende menos.",
+                    "A poupança tem o rendimento menor porque ela não é segura.",
+                    "Ações oferecem mais rentabilidade pela mesma liquidez e segurança."
+                ],
+                correctAnswer: 0,
+                explanation: "Alternativa A – O Tesouro Selic tem segurança e liquidez e está rendendo mais do que a poupança."
+            },
+            {
+                id: 28,
+                text: "Carlinhos quer começar a administrar suas finanças e pediu para seus parentes darem dinheiro no seu aniversário ao invés de presentes. No dia seguinte, Carlinhos vai investir esse dinheiro, através do aplicativo do banco, ele encontra duas opções de renda fixa: um investimento que rende 10% ao ano e um investimento que rende 90% do CDI no período. Os investimentos podem ser classificados, respectivamente, como:",
+                options: [
+                    "A Poupança e Tesouro Direto.",
+                    "B Indexado ao IPCA e Indexado à inflação.",
+                    "C Prefixado e Pós-fixado.",
+                    "D Atrelado ao dólar e Atrelado ao CDI.",
+                    "E Indexado a TR e Atrelado ao CDI."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Prefixado e Pós-fixado."
+            },
+            {
+                id: 29,
+                text: "Matheus está pensando em investir em um Certificado de Depósito Bancário (CDB) com o seu banco, mas está preocupado com a segurança do seu investimento. Ele tem medo de que o banco quebre e ele perca todo o dinheiro investido. Ele pergunta para você se existe alguma garantia para esse tipo de investimento em renda fixa. O que você responde?",
+                options: [
+                    "A Matheus não precisa se preocupar, pois os CDBs são garantidos pelo Fundo Garantidor de Créditos (FGC) até o limite de R$ 250.000,00 por pessoa.",
+                    "B Matheus precisa se preocupar, pois caso o banco quebre, ele perderá todo o dinheiro investido.",
+                    "C Matheus não precisa se preocupar, pois o Tesouro Nacional garante o recebimento do valor investido de todos os títulos de renda fixa.",
+                    "D Matheus precisa se preocupar, pois o Fundo Garantidor de Créditos (FGC) apenas garante o recebimento do valor investido em debêntures, mas não em CDBs.",
+                    "E Matheus não precisa se preocupar, pois o Fundo Garantidor de Créditos (FGC) garante o recebimento do valor investido em títulos de renda fixa, sem limite de valor."
+                ],
+                correctAnswer: 0,
+                explanation: "Alternativa A – Matheus não precisa se preocupar, pois os CDBs são garantidos pelo Fundo Garantidor de Créditos (FGC) até o limite de R$ 250.000,00 por pessoa."
+            },
+            {
+                id: 30,
+                text: "Marcelo está começando a planejar a sua aposentadoria e deseja poupar. Sua prioridade é proteger seu poder de compra do aumento do nível de preços. Um investimento adequado para ele seria um título _____ com retornos _____. Já a sua esposa, Giovanna, vê um cenário de taxas de juros interessantes e quer aproveitar essa oportunidade para obter uma rentabilidade maior. Um investimento adequado para ela seria um título de _____ com retornos pré-fixados.",
+                options: [
+                    "A Tesouro RendA+, pós-fixados à SELIC, Renda Fixa.",
+                    "B Renda Variável, pré-fixados, Renda Fixa.",
+                    "C Tesouro RendA+, pré-fixados, Renda Variável.",
+                    "D Tesouro RendA+, vinculados à inflação, Renda Fixa.",
+                    "E Renda Variável, vinculados à inflação, Renda Variável."
+                ],
+                correctAnswer: 3,
+                explanation: "Alternativa D – Tesouro RendA+, vinculados à inflação, Renda Fixa."
+            },
+            {
+                id: 31,
+                text: "Ao abrir o aplicativo do banco para investir em renda fixa, você provavelmente verá o retorno de cada investimento nos últimos 12 meses comparado a algum indicador. Dos indicadores a seguir, quais fazem sentido para medir a performance de um investimento de renda fixa? I. CDI II. Ibovespa III. Taxa Selic IV. Dólar V. Ouro",
+                options: [
+                    "A I e II.",
+                    "B I, II e IV.",
+                    "C I e III.",
+                    "D III e IV.",
+                    "E II, IV e V."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – I e III."
+            },
+            {
+                id: 32,
+                text: "Camila quer investir em renda fixa, e precisa decidir se quer emprestar dinheiro para uma cooperativa de crédito ou para uma empresa. Ela sabe que emprestar dinheiro para empresas costuma ter uma rentabilidade maior. Porém, antes de investir em uma debênture, ela decide consultar o Caderno do Estudante da OLITEF para garantir que não está esquecendo de nenhuma informação importante. Ao ler a seção de renda fixa, Camila identifica um fator muito importante que deve influenciar sua decisão:",
+                options: [
+                    "A Empréstimos para empresas dependem da variação do dólar.",
+                    "B Empréstimos para cooperativas de créditos são mais arriscados porque existem menos cooperativas de créditos do que empresas no Brasil.",
+                    "C Empréstimos para empresas não são garantidos pelo FGC ou FGCoop.",
+                    "D Empréstimos para cooperativas de créditos são sempre protegidos contra a inflação.",
+                    "E Empréstimos para empresas são mais seguros pois elas podem entrar em recuperação judicial."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Empréstimos para empresas não são garantidos pelo FGC ou FGCoop."
+            },
+            // Questões 33 a 35 - MA03 – RENDA VARIÁVEL
+            {
+                id: 33,
+                text: "Manuela estava estudando sobre a ação da Cão Feliz, uma empresa que vende brinquedos para cachorros. Ela viu que nos últimos dois anos a ação subiu 52%, mas caiu 21% no último mês. Considerando que Manuela quer ter a ação por pelo menos dois anos, ela deveria comprar uma ação da Cão Feliz?",
+                options: [
+                    "A Sim. Como a ação subiu 52% nos últimos dois anos, significa que subirá no mínimo 52% nos próximos anos.",
+                    "B Sim. Como a ação subiu 52% nos últimos dois anos, significa que subirá no máximo 52% nos próximos anos.",
+                    "C Sim. Porque está todo mundo comprando e a ação com certeza vai subir.",
+                    "D Não. Como a ação caiu 21% no último mês, ela irá continuar caindo nos próximos meses e, portanto, pelos próximos anos.",
+                    "E Não. Manuela deveria aprofundar sua análise sobre a empresa e o cenário econômico antes de tomar sua decisão."
+                ],
+                correctAnswer: 4,
+                explanation: "Alternativa E – Não. Manuela deveria aprofundar sua análise sobre a empresa e o cenário econômico antes de tomar sua decisão."
+            },
+            {
+                id: 34,
+                text: "_____ é o principal indicador de desempenho das ações das maiores empresas listadas na B3. Ele reflete a variação média das ações mais negociadas e serve como um termômetro _____ . Laura gostaria de comprar diversas ações em uma única compra, tendo como referência um índice. Ela poderia fazer isso através de um _____ .",
+                options: [
+                    "Dl, do mercado de câmbio, CDI.",
+                    "lbovespa B3, da bolsa de valores, ETF.",
+                    "Selic, do mercado de commodities, Selic.",
+                    "lbovespa B3, do mercado imobiliário, FII.",
+                    "Taxa Referencial, do mercado de capitais, BDR."
+                ],
+                correctAnswer: 1,
+                explanation: "Alternativa B – Ibovespa B3, da bolsa de valores, ETF."
+            },
+            {
+                id: 35,
+                text: "Três amigos, Beatriz, Bernardo e Carlos, investem em diferentes tipos de ativos. Ao final do ano, eles compararam seus resultados: - Beatriz teve um retorno em linha com a taxa de juros básica da economia. - Bernardo teve um ganho real, ou seja, acima da inflação do período - Carlos teve um retorno vinculado ao desempenho das ações de empresas brasileiras. Qual é a relação mais provável entre cada amigo e seu tipo de investimento?",
+                options: [
+                    "Beatriz – Tesouro Selic; Bernardo – Tesouro IPCA+; Carlos – BDR.",
+                    "Beatriz – Tesouro Selic; Bernardo – Tesouro IPCA+; Carlos – lbovespa B3.",
+                    "Beatriz – Ação de uma empresa madura; Bernardo – Debênture; Carlos – BDR.",
+                    "Beatriz – lbovespa B3; Bernardo – Debênture; Carlos – Ação de uma empresa madura.",
+                    "Beatriz – BDR; Bernardo – Tesouro IPCA+; Carlos – Debênture."
+                ],
+                correctAnswer: 1,
+                explanation: "Alternativa B – Beatriz - Tesouro Selic; Bernardo – Tesouro IPCA+; Carlos – Ibovespa B3."
             }
         ];
 
@@ -261,6 +720,7 @@
         const explanationElement = document.getElementById('explanation');
         const nextButton = document.getElementById('next-btn');
         const progressBar = document.getElementById('progress');
+        const questionContainer = document.getElementById('question-container');
         
         // Inicializar a primeira questão
         loadQuestion();
@@ -303,6 +763,15 @@
             
             // Esconder correção
             correctionContainer.style.display = 'none';
+            submitButton.style.display = 'inline-block';
+            
+            // Verificar se já foi respondida
+            if (userAnswers[currentQuestion] !== undefined) {
+                const selectedOption = optionsContainerElement.querySelector(`.option[data-index="${userAnswers[currentQuestion]}"]`);
+                if (selectedOption) {
+                    selectedOption.classList.add('selected');
+                }
+            }
         }
         
         // Evento para verificar resposta
@@ -329,6 +798,12 @@
             }
             
             explanationElement.innerHTML = question.explanation;
+            submitButton.style.display = 'none';
+            
+            // Atualizar botão de próxima questão se for a última
+            if (currentQuestion === questions.length - 1) {
+                nextButton.textContent = 'Ver Resultados';
+            }
         });
         
         // Evento para próxima questão
@@ -356,14 +831,45 @@
             
             const scorePercentage = (correctCount / questions.length) * 100;
             
-            questionNumberElement.textContent = 'Resultado Final';
-            questionTextElement.textContent = `Você acertou ${correctCount} de ${questions.length} questões (${scorePercentage.toFixed(1)}%)`;
-            optionsContainerElement.innerHTML = '';
-            submitButton.style.display = 'none';
-            correctionContainer.style.display = 'none';
+            // Criar HTML dos resultados
+            let resultsHTML = `
+                <div class="results-container">
+                    <h2>Resultado Final</h2>
+                    <div class="score">Você acertou ${correctCount} de ${questions.length} questões (${scorePercentage.toFixed(1)}%)</div>
+                    <div class="results-details">
+            `;
             
-            // Atualizar barra de progresso para 100%
-            progressBar.style.width = '100%';
+            // Adicionar detalhes de cada questão
+            questions.forEach((question, index) => {
+                const isCorrect = userAnswers[index] === question.correctAnswer;
+                const userAnswer = userAnswers[index] !== undefined ? question.options[userAnswers[index]] : "Não respondida";
+                const correctAnswer = question.options[question.correctAnswer];
+                
+                resultsHTML += `
+                    <div class="result-item ${isCorrect ? 'result-correct' : 'result-incorrect'}">
+                        <strong>Questão ${question.id}:</strong> ${isCorrect ? '✓ Correta' : '✗ Incorreta'}<br>
+                        <strong>Sua resposta:</strong> ${userAnswer}<br>
+                        ${!isCorrect ? `<strong>Resposta correta:</strong> ${correctAnswer}<br>` : ''}
+                        <strong>Explicação:</strong> ${question.explanation}
+                    </div>
+                `;
+            });
+            
+            resultsHTML += `
+                    </div>
+                    <button class="btn btn-restart" id="restart-btn">Fazer Novamente</button>
+                </div>
+            `;
+            
+            // Substituir o conteúdo do question-container pelos resultados
+            questionContainer.innerHTML = resultsHTML;
+            
+            // Adicionar evento ao botão de reiniciar
+            document.getElementById('restart-btn').addEventListener('click', function() {
+                currentQuestion = 0;
+                userAnswers = [];
+                loadQuestion();
+            });
         }
     </script>
 </body>
