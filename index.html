@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado de Educação Financeira - 6º Ano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #4CAF50;
+        }
+        
+        h1 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .question-number {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .options-container {
+            margin: 20px 0;
+        }
+        
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            background-color: #f1f8e9;
+            border: 1px solid #c5e1a5;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background-color: #e8f5e9;
+            transform: translateY(-2px);
+        }
+        
+        .option.selected {
+            background-color: #c8e6c9;
+            border-color: #4CAF50;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #388E3C;
+        }
+        
+        .btn-next {
+            background-color: #2196F3;
+        }
+        
+        .btn-next:hover {
+            background-color: #1976D2;
+        }
+        
+        .correction-container {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .correct {
+            background-color: #e8f5e9;
+            border: 1px solid #4CAF50;
+        }
+        
+        .incorrect {
+            background-color: #ffebee;
+            border: 1px solid #f44336;
+        }
+        
+        .correction-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .explanation {
+            margin-top: 10px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #757575;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulado de Educação Financeira</h1>
+            <p>Nível 1 - 6º ano - Professor Sergio Eric</p>
+            <p>
+        Siga-me no Instagram:
+        <a href="https://www.instagram.com/prof.sergio.eric.matematica/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i> @prof.sergio.eric.matematica
+        </a>
+    </p>
+        </header>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        
+        <div class="quiz-card" id="question-container">
+            <div class="question-number" id="question-number">Questão 1</div>
+            <div class="question-text" id="question-text"></div>
+            <div class="options-container" id="options-container"></div>
+            <button class="btn" id="submit-btn">Verificar Resposta</button>
+            
+            <div class="correction-container" id="correction-container">
+                <div class="correction-title" id="correction-title"></div>
+                <div class="explanation" id="explanation"></div>
+                <button class="btn btn-next" id="next-btn">Próxima Questão</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>OLITEF - Olimpíada do Tesouro Direto de Educação Financeira</p>
+        </div>
+    </div>
+
+    <script>
+        // Dados das questões
+        const questions = [
+            {
+                id: 1,
+                text: "É importante ter um dinheiro guardado para imprevistos. O ideal é guardar o suficiente para poder pagar todas as suas despesas por alguns meses. O dinheiro guardado com essa finalidade é chamado de:",
+                options: [
+                    "Renda Passiva.",
+                    "Fundo de Investimentos.",
+                    "Reserva de Emergência.",
+                    "Bolsa de Valores.",
+                    "Fundo Exclusivo."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Reserva de Emergência."
+            },
+            {
+                id: 2,
+                text: "Liz está planejando suas finanças para o próximo mês. Ela sabe que receberá R$ 2.000,00 de salário e tem as seguintes despesas fixas: Aluguel: R$ 700,00, Conta de luz: R$ 150,00, Conta de água: R$ 100,00, Internet: R$ 100,00. Além disso, ela estima que terá as seguintes despesas variáveis: Alimentação: R$ 600,00, Transporte: R$ 400,00, Lazer: R$ 150,00. Com base nessas informações, assinale a alternativa correta:",
+                options: [
+                    "Liz gastará, ao todo, R$ 1.900,00 no próximo mês.",
+                    "Liz poderá investir o dinheiro que sobrou no Tesouro Direto.",
+                    "Liz gastará R$ 200,00 a mais do que seu salário.",
+                    "Liz gastará menos da metade do seu salário com despesas fixas.",
+                    "Liz gastará mais com despesas fixas do que com despesas variáveis."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Liz gastará R$ 200,00 a mais do que seu salário.<br>Receita: 2.000<br>Despesa Fixa: 700 + 150 + 100 + 100 = R$ 1.050,00<br>Despesa Variável: 600 + 400 + 150 = R$ 1.150,00<br>Despesa Total: 1.050 + 1.150 = R$ 2.200,00<br>Receita – Despesa = 2.000 – 2.200 = R$ –200,00"
+            },
+            {
+                id: 3,
+                text: "A ______ é o processo caracterizado pelo aumento geral dos preços de bens e serviços de um país e pela redução do ______ para o consumidor. Para nos protegermos dela com um investimento no Tesouro Nacional, podemos investir em um título do Tesouro atrelado ao ______, que é o índice de preços mais observado no Brasil.",
+                options: [
+                    "A taxa de juros, poder de compra, IPCA.",
+                    "B inflação, salário, PIB.",
+                    "C inflação, poder de compra, IPCA.",
+                    "D taxa de juros, salário, SELIC.",
+                    "E inflação, poder de compra, SELIC."
+                ],
+                correctAnswer: 2,
+                explanation: "Alternativa C – Inflação, poder de compra, IPCA."
+            },
+            // Adicione as demais questões seguindo o mesmo padrão
+            // (Como exemplo, adicionarei apenas mais uma para demonstração)
+            {
+                id: 4,
+                text: "No país 'Títuloquistão', uma cesta básica custa R$ 50,00, enquanto no país 'Indicelândia', a mesma cesta básica custa R$ 160,00. Após 1 ano, o preço da cesta básica subiu para R$ 100,00 no 'Títuloquistão' e R$ 180,00 na 'Indicelândia'. Qual dos dois países teve a inflação mais alta durante esse período?",
+                options: [
+                    "A O país 'Títuloquistão'.",
+                    "B O país 'Indicelândia'.",
+                    "C A inflação em ambos foi de 200%.",
+                    "D A inflação em ambos foi de 125%.",
+                    "E Não é possível determinar."
+                ],
+                correctAnswer: 0,
+                explanation: "Alternativa A – O país 'Títuloquistão'."
+            }
+        ];
+
+        // Variáveis de controle
+        let currentQuestion = 0;
+        let userAnswers = [];
+        
+        // Elementos DOM
+        const questionNumberElement = document.getElementById('question-number');
+        const questionTextElement = document.getElementById('question-text');
+        const optionsContainerElement = document.getElementById('options-container');
+        const submitButton = document.getElementById('submit-btn');
+        const correctionContainer = document.getElementById('correction-container');
+        const correctionTitle = document.getElementById('correction-title');
+        const explanationElement = document.getElementById('explanation');
+        const nextButton = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress');
+        
+        // Inicializar a primeira questão
+        loadQuestion();
+        
+        // Função para carregar a questão atual
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            
+            // Atualizar elementos da questão
+            questionNumberElement.textContent = `Questão ${question.id}`;
+            questionTextElement.textContent = question.text;
+            
+            // Atualizar barra de progresso
+            const progressPercentage = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            
+            // Limpar opções anteriores
+            optionsContainerElement.innerHTML = '';
+            
+            // Adicionar novas opções
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                
+                optionElement.addEventListener('click', function() {
+                    // Remover seleção anterior
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Selecionar nova opção
+                    this.classList.add('selected');
+                    userAnswers[currentQuestion] = parseInt(this.dataset.index);
+                });
+                
+                optionsContainerElement.appendChild(optionElement);
+            });
+            
+            // Esconder correção
+            correctionContainer.style.display = 'none';
+        }
+        
+        // Evento para verificar resposta
+        submitButton.addEventListener('click', function() {
+            if (userAnswers[currentQuestion] === undefined) {
+                alert('Por favor, selecione uma resposta antes de verificar.');
+                return;
+            }
+            
+            const question = questions[currentQuestion];
+            const userAnswer = userAnswers[currentQuestion];
+            const isCorrect = userAnswer === question.correctAnswer;
+            
+            // Mostrar correção
+            correctionContainer.style.display = 'block';
+            correctionContainer.className = isCorrect ? 'correction-container correct' : 'correction-container incorrect';
+            
+            if (isCorrect) {
+                correctionTitle.textContent = 'Resposta Correta!';
+                correctionTitle.style.color = '#4CAF50';
+            } else {
+                correctionTitle.textContent = 'Resposta Incorreta!';
+                correctionTitle.style.color = '#f44336';
+            }
+            
+            explanationElement.innerHTML = question.explanation;
+        });
+        
+        // Evento para próxima questão
+        nextButton.addEventListener('click', function() {
+            currentQuestion++;
+            
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                // Fim do quiz - mostrar resultados
+                showResults();
+            }
+        });
+        
+        // Função para mostrar resultados finais
+        function showResults() {
+            let correctCount = 0;
+            
+            // Contar respostas corretas
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] === questions[i].correctAnswer) {
+                    correctCount++;
+                }
+            }
+            
+            const scorePercentage = (correctCount / questions.length) * 100;
+            
+            questionNumberElement.textContent = 'Resultado Final';
+            questionTextElement.textContent = `Você acertou ${correctCount} de ${questions.length} questões (${scorePercentage.toFixed(1)}%)`;
+            optionsContainerElement.innerHTML = '';
+            submitButton.style.display = 'none';
+            correctionContainer.style.display = 'none';
+            
+            // Atualizar barra de progresso para 100%
+            progressBar.style.width = '100%';
+        }
+    </script>
+</body>
+</html>
